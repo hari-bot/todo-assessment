@@ -4,6 +4,8 @@ import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 
+import userRoute from "./routes/users.js";
+
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "Todo Application" });
 });
+
+app.use("/users", userRoute);
 
 mongoose
   .connect(process.env.MONGODBDB_URL)
