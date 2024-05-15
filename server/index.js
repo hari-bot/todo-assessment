@@ -12,11 +12,12 @@ const app = express();
 
 //Middlewares
 app.use(morgan("short"));
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ message: "Todo Application" });
+  res.json({ message: "Todo Application API" });
 });
 
 app.use("/users", userRoute);

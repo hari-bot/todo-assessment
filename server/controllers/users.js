@@ -15,7 +15,7 @@ export const registerUser = async (req, res) => {
 
     const token = newUser.generateJwtToken();
 
-    return res.status(200).json({ token });
+    return res.status(200).json({ token, userID: newUser._id });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -42,7 +42,7 @@ export const signInUser = async (req, res) => {
 
     const token = user.generateJwtToken();
 
-    return res.status(200).json({ token });
+    return res.status(200).json({ token, userID: user._id });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
