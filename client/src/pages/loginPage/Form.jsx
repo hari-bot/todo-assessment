@@ -51,6 +51,7 @@ const Form = () => {
       if (registered.token) {
         setCookie("userID", registered.userID);
         setCookie("AuthToken", registered.token);
+        setCookie("userName", registered.userName);
         navigate("/home");
       } else {
         setError(registered.error || "Registration failed");
@@ -73,6 +74,7 @@ const Form = () => {
       if (signedIn.token) {
         setCookie("userID", signedIn.userID);
         setCookie("AuthToken", signedIn.token);
+        setCookie("userName", signedIn.userName);
         navigate("/home");
       } else {
         setError(signedIn.error || "Sign in failed");
