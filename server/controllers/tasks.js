@@ -101,6 +101,7 @@ export const deleteTask = async (req, res) => {
 
 export const toggleTaskCompletion = async (req, res) => {
   try {
+    console.log("Hello From Patch");
     const taskId = req.params.taskId;
 
     const task = await Task.findById(taskId);
