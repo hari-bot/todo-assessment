@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, toggleCompleted, deleteTodo }) => {
+const TodoList = ({ todos, toggleCompleted, deleteTodo, editTodo }) => {
   return (
     <ul>
       <li className="my-2 text-sm italic">All Your Notes Here...</li>
@@ -12,6 +12,7 @@ const TodoList = ({ todos, toggleCompleted, deleteTodo }) => {
             index={index}
             toggleCompleted={toggleCompleted}
             deleteTodo={deleteTodo}
+            editTodo={editTodo}
           />
         ))}
     </ul>

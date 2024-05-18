@@ -1,12 +1,20 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-const AddTodoForm = ({ addTodo, onClose }) => {
+const formatDate = (date) => {
+  const d = new Date(date);
+  const month = `0${d.getMonth() + 1}`.slice(-2);
+  const day = `0${d.getDate()}`.slice(-2);
+  const year = d.getFullYear();
+  return `${year}-${month}-${day}`;
+};
+
+const AddTodoForm = ({ addTodo, onClose, todo, editTodo }) => {
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      dueDate: "",
+      title: todo?.title || "",
+      description: todo?.description || "",
+      dueDate: todo ? formatDate(todo.dueDate) : "",
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Required"),
@@ -14,8 +22,9 @@ const AddTodoForm = ({ addTodo, onClose }) => {
       dueDate: Yup.date().required("Required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      addTodo(values);
+      todo ? editTodo(values, todo._id) : addTodo(values);
       resetForm();
+      onClose();
     },
   });
 
@@ -54,7 +63,7 @@ const AddTodoForm = ({ addTodo, onClose }) => {
 
             <div className="text-center">
               <p className="mb-3 text-2xl font-semibold leading-5 text-slate-900">
-                Create a New Todo
+                {todo ? "Edit Your Todo" : "Create a New Todo"}
               </p>
               <p className="mt-2 text-sm leading-4 text-slate-600">
                 Stay on Top of Your Tasks.
@@ -134,7 +143,7 @@ const AddTodoForm = ({ addTodo, onClose }) => {
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
               >
-                Add Todo
+                {todo ? "Update Todo" : "Add Todo"}
               </button>
             </form>
           </div>

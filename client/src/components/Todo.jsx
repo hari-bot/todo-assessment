@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import TodoList from "./TodoList";
 import Form from "./Form";
+
 const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [cookies] = useCookies(null);
@@ -25,6 +26,22 @@ const Todo = () => {
     try {
       await fetch(`${apiUrl}/tasks/${userID}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      fetchData();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const editTodo = async (values, todoID) => {
+    try {
+      await fetch(`${apiUrl}/tasks/${todoID}`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
@@ -88,24 +105,14 @@ const Todo = () => {
         </button>
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        {/* <FilterButtons /> */}Filter Button
-        <div className="flex items-center mb-4">
-          <input
-            className="flex-grow p-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500"
-            type="text"
-            placeholder="Search Todos"
-            //   value={searchTerm}
-            //   onChange={(e) => handleSearchChange(e.target.value)}
-          />
-          <button className="ml-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none">
-            {/* <BsSearch size={20} /> */} Search
-          </button>
-        </div>
+        Filter By
       </div>
       <TodoList
         todos={todos}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
+        editTodo={editTodo}
+        toggleShowForm={toggleShowForm}
       />
     </div>
   );
