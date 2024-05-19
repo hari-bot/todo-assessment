@@ -17,6 +17,9 @@ const Todo = () => {
     try {
       const todosResponse = await fetch(`${apiUrl}/tasks/${userID}`, {
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${cookies.AuthToken}`,
+        },
       });
       const todosData = await todosResponse.json();
       setTodos(todosData.data);
@@ -32,6 +35,7 @@ const Todo = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.AuthToken}`,
         },
         body: JSON.stringify(values),
       });
@@ -48,6 +52,7 @@ const Todo = () => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.AuthToken}`,
         },
         body: JSON.stringify(values),
       });
@@ -62,6 +67,9 @@ const Todo = () => {
     try {
       await fetch(`${apiUrl}/tasks/complete/${taskID}`, {
         method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${cookies.AuthToken}`,
+        },
       });
       fetchData();
     } catch (error) {
@@ -73,6 +81,9 @@ const Todo = () => {
     try {
       await fetch(`${apiUrl}/tasks/${taskID}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${cookies.AuthToken}`,
+        },
       });
       fetchData();
     } catch (error) {
@@ -108,6 +119,7 @@ const Todo = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -167,6 +179,7 @@ const Todo = () => {
         deleteTodo={deleteTodo}
         editTodo={editTodo}
         toggleShowForm={toggleShowForm}
+        setTodos={setTodos}
       />
     </div>
   );

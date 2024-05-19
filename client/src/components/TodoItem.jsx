@@ -36,7 +36,7 @@ const TodoItem = ({ todo, toggleCompleted, deleteTodo, editTodo }) => {
       {showForm && (
         <Form editTodo={editTodo} onClose={toggleShowForm} todo={todo} />
       )}
-      <li className="border-b-2" draggable>
+      <div className="border-b-2 m-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2 gap-4">
           <div className="flex items-center">
             <span className="mr-4 text-gray-500">
@@ -121,7 +121,7 @@ const TodoItem = ({ todo, toggleCompleted, deleteTodo, editTodo }) => {
             </button>
           )}
         </div>
-      </li>
+      </div>
     </>
   );
 };
