@@ -1,4 +1,3 @@
-```markdown
 # Personal Todo App
 
 A personal Todo app that allows users to manage their tasks with features such as adding, editing, deleting, filtering, sorting by due date, and drag-and-drop reordering.
