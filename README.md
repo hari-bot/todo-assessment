@@ -26,7 +26,7 @@ A personal Todo app that allows users to manage their tasks with features such a
 
 ## Demo
 
-![Todo App Screenshot](path/to/screenshot.png)
+![Todo App Screenshot](client/public/images/git-hub-cover.png)
 
 ## Deployed Link
 
