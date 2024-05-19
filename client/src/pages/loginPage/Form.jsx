@@ -38,7 +38,7 @@ const Form = () => {
     try {
       const credentials = { ...values };
       const registerResponse = await fetch(
-        "http://localhost:3001/users/register",
+        "https://todo-assessment-api.onrender.com/users/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -63,11 +63,14 @@ const Form = () => {
 
   const signin = async (values, onSubmitProps) => {
     try {
-      const signInResponse = await fetch("http://localhost:3001/users/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const signInResponse = await fetch(
+        "https://todo-assessment-api.onrender.com/users/signin",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        }
+      );
       const signedIn = await signInResponse.json();
       onSubmitProps.resetForm();
 

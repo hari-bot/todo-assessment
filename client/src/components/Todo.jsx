@@ -11,7 +11,7 @@ const Todo = () => {
   const [currentFilter, serCurrentFilter] = useState("");
   const [sortOrder, setSortOrder] = useState("asc"); // State for sorting order
   const userID = cookies.userID;
-  const apiUrl = "http://localhost:3001";
+  const apiUrl = "https://todo-assessment-api.onrender.com";
 
   const fetchData = async () => {
     try {
