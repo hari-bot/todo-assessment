@@ -30,7 +30,7 @@ A personal Todo app that allows users to manage their tasks with features such a
 
 ## Deployed Link
 
-Check out the live version of the app [here](https://your-deployed-app-link.com)
+Check out the live version of the app [here](https://todo-assessment-client.onrender.com)
 
 ## Installation
 
