@@ -41,19 +41,21 @@ Check out the live version of the app [here](https://your-deployed-app-link.com)
    cd todo-assessment
    ```
 
-2. Install dependencies:
+2. Install and start client:
 
    ```bash
-   npm install-server
-   npm install-client
+   cd client
+   npm install
+   npm start
    
    ```
 
-3. Start the development server:
+3. Install and Start the server:
 
    ```bash
-   npm start-server
-   npm start-client
+   cd server
+   npm install
+   node index.js
    
    ```
 
