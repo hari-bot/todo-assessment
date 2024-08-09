@@ -77,8 +77,6 @@ Check out the live version of the app [here](https://todo-assessment-client.onre
 
 ## API Endpoints
 
-Assuming you have a backend with the following endpoints:
-
 - `GET /tasks/:userID` - Fetch all tasks for a user.
 - `POST /tasks/:userID` - Add a new task.
 - `PATCH /tasks/:taskID` - Edit an existing task.
